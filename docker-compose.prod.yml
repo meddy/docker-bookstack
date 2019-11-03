@@ -1,0 +1,29 @@
+version: "3"
+services:
+
+  bookstack:
+    networks:
+      - frontend
+      - backend
+
+  mysql:
+    networks:
+      - backend
+
+  nginx:
+    container_name: bookstack-nginx
+    image: nginx:1.17
+    depends_on:
+      - wiki
+    networks:
+      - frontend
+    volumes:
+      - ./nginx:/etc/nginx/conf.d
+      - ./certs:/etc/ssl/private
+    ports:
+      - "80:80"
+      - "443:443"
+
+networks:
+  frontend:
+  backend:

@@ -1,0 +1,26 @@
+version: "3"
+services:
+
+  bookstack:
+    container_name: bookstack-app
+    image: solidnerd/bookstack:0.27.5
+    depends_on:
+      - mysql
+    env_file:
+      - .env
+    volumes:
+      - uploads:/var/www/bookstack/public/uploads
+      - storage-uploads:/var/www/bookstack/storage/uploads
+
+  mysql:
+    container_name: bookstack-mysql
+    image: mysql:5.7
+    env_file:
+      - .env
+    volumes:
+      - mysql-data:/var/lib/mysql
+
+volumes:
+  mysql-data:
+  uploads:
+  storage-uploads:

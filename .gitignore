@@ -1,0 +1,5 @@
+.idea/
+certs/*.cer
+certs/*.key
+.DS_Store
+.env
