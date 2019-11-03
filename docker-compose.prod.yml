@@ -14,7 +14,7 @@ services:
     container_name: bookstack-nginx
     image: nginx:1.17
     depends_on:
-      - app
+      - bookstack
     networks:
       - frontend
     volumes:
